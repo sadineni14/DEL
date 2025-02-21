@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Fuel Offers</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f3f5;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+        .offer-section {
+            background-color: #ffeb3b;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .offer-section h2 {
+            color: #333;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Offer Card Styles */
+        .offer {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            margin-top: 20px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+        }
+
+        .offer:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .offer h3 {
+            color: #d32f2f;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .offer p {
+            color: #555;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .offer-button {
+            background-color: #d32f2f;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .offer-button:hover {
+            background-color: #c2185b;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .modal-content input {
+            padding: 12px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .modal-content button {
+            background-color: #d32f2f;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .modal-content button:hover {
+            background-color: #c2185b;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .offer-section h2 {
+                font-size: 24px;
+            }
+
+            .offer {
+                padding: 15px;
+            }
+
+            .modal-content {
+                width: 80%;
+            }
+
+            .offer-button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="offer-section">
+            <h2>Exclusive Special Offers for You!</h2>
+
+            <div class="offer">
+                <h3>10% Off on 100 Liters of Fuel</h3>
+                <p>Get 10% off every time you purchase 100 liters or more of fuel. Don't miss out!</p>
+                <button class="offer-button" onclick="openModal('offer1')">Claim Offer</button>
+            </div>
+
+            <div class="offer">
+                <h3>5% Off on Diesel - This Week Only!</h3>
+                <p>Save 5% on all diesel deliveries this week. Hurry, offer ends soon!</p>
+                <button class="offer-button" onclick="openModal('offer2')">Claim Offer</button>
+            </div>
+
+            <div class="offer">
+                <h3>Refer a Friend, Get 10% Off</h3>
+                <p>Refer a friend to our service and both of you will receive a 10% discount on your next purchase!</p>
+                <button class="offer-button" onclick="openModal('offer3')">Refer Now</button>
+            </div>
+
+            <div class="offer">
+                <h3>Winter Fuel Sale - 8% Off!</h3>
+                <p>Enjoy a special winter discount of 8% off all fuel deliveries. Available until December 31st.</p>
+                <button class="offer-button" onclick="openModal('offer4')">Claim Offer</button>
+            </div>
+
+            <div class="offer">
+                <h3>Bulk Purchase Discount - Up to 20% Off</h3>
+                <p>Buy more than 500 liters and get up to 20% off your total order.</p>
+                <button class="offer-button" onclick="openModal('offer5')">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Offers -->
+    <div id="offer1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('offer1')">&times;</span>
+            <h2>Claim Your 10% Off on 100 Liters of Fuel</h2>
+            <p>Enter your details below to claim this offer!</p>
+            <form>
+                <input type="email" placeholder="Enter your email" required><br><br>
+                <button type="submit">Claim Offer</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="offer2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('offer2')">&times;</span>
+            <h2>Claim Your 5% Off on Diesel!</h2>
+            <form>
+                <input type="email" placeholder="Enter your email" required><br><br>
+                <button type="submit">Claim Offer</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="offer3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('offer3')">&times;</span>
+            <h2>Refer a Friend, Get 10% Off</h2>
+            <p>To refer a friend and claim this offer, enter your email and your friend's details below:</p>
+            <form>
+                <input type="email" placeholder="Your Email" required><br><br>
+                <input type="email" placeholder="Friend's Email" required><br><br>
+                <button type="submit">Refer Now</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="offer5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('offer5')">&times;</span>
+            <h2>Buy Now and Get Up to 20% Off on Bulk Purchases!</h2>
+            <p>To claim the offer, select the number of liters you want to purchase and enter your details below:</p>
+            <form>
+                <input type="number" placeholder="Number of Liters" required><br><br>
+                <input type="email" placeholder="Your Email" required><br><br>
+                <button type="submit">Buy Now</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Function to open the modal
+        function openModal(offerId) {
+            document.getElementById(offerId).style.display = "block";
+        }
+
+        // Function to close the modal
+        function closeModal(offerId) {
+            document.getElementById(offerId).style.display = "none";
+        }
+
+        // Close the modal if clicked outside the modal content
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(event.target.id);
+            }
+        }
+    </script>
+</body>
+</html>
